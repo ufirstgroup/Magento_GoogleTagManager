@@ -49,7 +49,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		$data_layer = new Varien_Object();
 		$data_layer->setData($data);
 		Mage::dispatchEvent('cvm_googletagmanager_get_datalayer',
-		    array('data_layer' => $data_layer)
+			array('data_layer' => $data_layer)
 		);
 		$data = $data_layer->getData();
 
