@@ -1,0 +1,18 @@
+{
+    "name": "cvm/google-tag-manager",
+    "type": "magento-module",
+    "description":"A standard implementation of Google Tag Manager for Magento, with data layer support.",
+    "authors":[
+        {
+            "name":"Chris Martin"
+        }
+    ],
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*"
+    },
+    "extra": {
+        "map": [
+            ["app/*", "app/"]
+        ]
+    }
+}
