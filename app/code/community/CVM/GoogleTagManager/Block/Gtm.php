@@ -186,7 +186,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			'pageTitle' => $this->getLayout()->getBlock('head')->getTitle(),
 			'pageCategory' => $request->getRouteName(),
 			'pageSubCategory' => $request->getControllerName(),
-			'pageAttributes' => array('action' => $request->getActionName()),
+			'requestAction' => $request->getActionName(),
 		);
 		return $data;
 	}
