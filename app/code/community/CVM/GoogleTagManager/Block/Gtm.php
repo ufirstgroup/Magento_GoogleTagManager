@@ -43,6 +43,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		// Get transaction and visitor data, if desired.
 		if (Mage::helper('googletagmanager')->isDataLayerTransactionsEnabled()) $data = $data + $this->_getTransactionData();
 		if (Mage::helper('googletagmanager')->isDataLayerVisitorsEnabled()) $data = $data + $this->_getVisitorData();
+		if (Mage::helper('googletagmanager')->isDataLayerPageEnabled()) $data = $data + $this->_getPageData();
 
 		// Enable modules to add custom data to the data layer
 		$data_layer = new Varien_Object();
@@ -169,6 +170,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		$data['visitorLifetimeValue'] = round($ordersTotal,2);
 		$data['visitorExistingCustomer'] = ($ordersTotal > 0) ? 'Yes' : 'No';
 
+		return $data;
+	}
+
+
+	/**
+	 * Get page data for use in the data layer.
+	 *
+	 * @link https://developers.google.com/tag-manager/reference
+	 * @return array
+	 */
+	protected function _getPageData() {
+		$request = Mage::app()->getRequest();
+		$data = array(
+			'pageTitle' => $this->getLayout()->getBlock('head')->getTitle(),
+			'pageCategory' => $request->getRouteName(),
+			'pageSubCategory' => $request->getControllerName(),
+			'pageAttributes' => array('action' => $request->getActionName()),
+		);
 		return $data;
 	}
 
