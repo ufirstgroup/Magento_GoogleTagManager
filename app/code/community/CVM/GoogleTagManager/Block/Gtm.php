@@ -187,6 +187,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			'pageCategory' => $request->getRouteName(),
 			'pageSubCategory' => $request->getControllerName(),
 			'requestAction' => $request->getActionName(),
+			'mageStore' => Mage::app()->getStore()->getCode(),
+			'pageLang' => Mage::getStoreConfig('general/locale/code'),
 		);
 		return $data;
 	}
